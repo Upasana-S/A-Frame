@@ -14,7 +14,7 @@
       console.log("adding child");
       atom.setAttribute("geometry", {primitive: "sphere", color:col, radius:rad});
       atom.setAttribute("position",pos);
-      atom.setAttribute("material"," transparent: true;metalness:0.2; roughness: 0.6; color: "+col+";");
+      atom.setAttribute("material"," transparent: true;metalness:0.6; roughness: 0.6; color: "+col+";");
       scen=document.querySelector("a-scene");
       scen.appendChild(atom);
       console.log("added child");
