@@ -31,12 +31,13 @@
     }
     function drawPlane(neighbours, rows){
       y=1.1;
+      depth=15
       colors=["blue","purple"];
 
         for(var i=0; i< rows; i++){
-          y+=2;
-            x=-10+ (i%2)*(neighbours==6);
-            drawLine(10,x,y,10 *(-1 *(neighbours==4))+ 20*(neighbours==6),colors[i%2])
+          y+=2-(neighbours==6)*0.25;
+            x=rows+ (i%2)*(neighbours==6);
+            drawLine(10,x,y, depth*(-1 *(neighbours==4))+ depth*(neighbours==6),colors[i%2]);
 
     }
   }
