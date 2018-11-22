@@ -190,6 +190,42 @@
 	<script>
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
+
+		obj=
+			{
+				xhr: new XMLHttpRequest(),
+
+				getMsg: function()
+				{
+					
+					this.xhr.onreadystatechange = this.showMsg;
+			
+					this.xhr.open("GET", "https://upasana-s.github.io/TNT/getmsg.php", true);
+	
+					this.xhr.send();
+					alert("worked");
+				},
+	
+	
+				showMsg: function()
+				{
+					if(obj.xhr.readyState == 4 && obj.xhr.status== 200)
+					{
+						//alert(this.responseXML.documentElement.childNodes[1].childNodes[1].nodeName);
+						/*root = this.responseXML.documentElement;
+			
+						node = root.getElementsByTagName("name")[1];
+						alert(node.firstChild.nodeValue);
+			
+						obj.xhr.abort();*/
+			
+						myobj = this.responseText;
+			
+						alert(myobj);
+					}
+				}
+			};
+
 		function read_equation()
 		{
 			str="Mg(ClO3)2 = MgCl2 + O2";
@@ -226,7 +262,7 @@
 			beam2.stroke();
 		}
 		draw_images();
-		window.addEventListener("click", unbalance,true);
+		//window.addEventListener("click", unbalance,true);
 		var side=0;
 		var angle=0;
 		function unbalance()
@@ -288,6 +324,7 @@
 				inp.type="text";
 				inp.style.width="50px";
 				inp.value="1";
+				inp.onblur=obj.getMsg;
 				equation.appendChild(inp);
 				sp=document.createElement("span");
 				sp.innerHTML=eqt[0][i];
@@ -314,6 +351,8 @@
 				equation.appendChild(sp);
 			}
 		}
+
+		
 		
 		
 	</script>
