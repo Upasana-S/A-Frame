@@ -1,0 +1,150 @@
+Mg(ClO3)2 = MgCl2 + O2 =>
+Mg(ClO3)2 = MgCl2 + 3 O2
+
+Fe + O2 = Fe2O3 =>
+4 Fe + 3 O2 = 2 Fe2O3
+
+KMnO4 + Na2SO3 + H2SO4 = K2SO4 + MnSO4 + Na2SO4 + H2O =>
+2 KMnO4 + 5 Na2SO3 + 3 H2SO4 = K2SO4 + 2 MnSO4 + 5 Na2SO4 + 3 H2O
+
+C7H16 + O2 = CO2 + H2O =>
+C7H16 + 11 O2 = 7 CO2 + 8 H2O
+
+Al + HCl = AlCl3 + H2 =>
+2 Al + 6 HCl = 2 AlCl3 + 3 H2
+
+Ag + HNO3 = AgNO3 + NO + H2O =>
+3 Ag + 4 HNO3 = 3 AgNO3 + NO + 2 H2O
+
+NO3 + I2 = IO3 + NO2 =>
+6 NO3 + I2 = 2 IO3 + 6 NO2
+
+Al + CuCl = AlCl + Cu =>
+Al + CuCl = AlCl + Cu
+
+Sb + O2 = Sb4O6 =>
+4 Sb + 3 O2 = Sb4O6
+
+H2 + Cl2 = HCl =>
+H2 + Cl2 = 2 HCl
+
+K + Br2 = KBr =>
+2 K + Br2 = 2 KBr
+
+KMnO4 + Na2SO3 + KOH = K2MnO4 + Na2SO4 + H2O =>
+2 KMnO4 + Na2SO3 + 2 KOH = 2 K2MnO4 + Na2SO4 + H2O
+
+O2 + CH4 = CO2 + H2O =>
+2 O2 + CH4 = CO2 + 2 H2O
+
+CaC2 + H2O = Ca(OH)2 + C2H2 =>
+CaC2 + 2 H2O = Ca(OH)2 + C2H2
+
+CaCl2 + Na2CO3 = CaCO3 + NaCl =>
+CaCl2 + Na2CO3 = CaCO3 + 2 NaCl
+
+Na2CO3 + HCl = NaCl + H2O + CO2 =>
+Na2CO3 + 2 HCl = 2 NaCl + H2O + CO2
+
+Al + Fe2O3 = Al2O3 + Fe =>
+2 Al + Fe2O3 = Al2O3 + 2 Fe
+
+C7H16 + O2 = CO2 + H2O =>
+C7H16 + 11 O2 = 7 CO2 + 8 H2O
+
+C2H6 + O2 = CO2 + H2O =>
+2 C2H6 + 7 O2 = 4 CO2 + 6 H2O
+
+Fe2O3 + H2 = Fe + H2O =>
+Fe2O3 + 3 H2 = 2 Fe + 3 H2O
+
+AuK + H2O + NaS = KS + O2 + NaH + Au =>
+4 AuK + 2 H2O + 4 NaS = 4 KS + O2 + 4 NaH + 4 Au
+
+C3H8 + O2 = CO2 + H2O =>
+C3H8 + 5 O2 = 3 CO2 + 4 H2O
+
+C4H10 + O2 = CO2 + H2O =>
+2 C4H10 + 13 O2 = 8 CO2 + 10 H2O
+
+C2H2 + O2 = CO2 + H20 =>
+10 C2H2 + 20 O2 = 20 CO2 + H20
+
+Mg + N2 = Mg3N2 =>
+3 Mg + N2 = Mg3N2
+
+Mg + N2 = Mg3N2 =>
+3 Mg + N2 = Mg3N2
+
+Al + FeO = Al2O3 + Fe =>
+2 Al + 3 FeO = Al2O3 + 3 Fe
+
+C2H2 + O2 = CO2 + H20 =>
+10 C2H2 + 20 O2 = 20 CO2 + H20
+
+C2H2 + O2 = CO2 + H2O =>
+2 C2H2 + 5 O2 = 4 CO2 + 2 H2O
+
+FeS2 + O2 = Fe2O3 + SO2 =>
+4 FeS2 + 11 O2 = 2 Fe2O3 + 8 SO2
+
+Ag2O = Ag + O2 =>
+2 Ag2O = 4 Ag + O2
+
+K2O + H2O = KOH =>
+K2O + H2O = 2 KOH
+
+NaCl + H2O = Cl2 + NaOH + H2 =>
+2 NaCl + 2 H2O = Cl2 + 2 NaOH + H2
+
+Al2(SO4)3 + Ca(OH)2 = Al(OH)3 + CaSO4 =>
+Al2(SO4)3 + 3 Ca(OH)2 = 2 Al(OH)3 + 3 CaSO4
+
+H2O2 = H2O + O2 =>
+2 H2O2 = 2 H2O + O2
+
+KI + Br2 = KBr + I2 =>
+2 KI + Br2 = 2 KBr + I2
+
+N2O5 + H2O = HNO3 =>
+N2O5 + H2O = 2 HNO3
+
+H2SO4 + HI = H2S + I2 + H2O =>
+H2SO4 + 8 HI = H2S + 4 I2 + 4 H2O
+
+C2H6 + O2 = CO2 + H2O =>
+2 C2H6 + 7 O2 = 4 CO2 + 6 H2O
+
+Al + O2 = Al2O3 =>
+4 Al + 3 O2 = 2 Al2O3
+
+SO2 + H2O + O2 = H2SO4 =>
+2 SO2 + 2 H2O + O2 = 2 H2SO4
+
+CaC2 + H2O = Ca(OH)2 + C2H2 =>
+CaC2 + 2 H2O = Ca(OH)2 + C2H2
+
+MgCO3 = MgO + CO2 =>
+MgCO3 = MgO + CO2
+
+H2CO3 = CO2 + H2O =>
+H2CO3 = CO2 + H2O
+
+NaOH + Cl = NaCl + NaClO + H2O =>
+2 NaOH + 2 Cl = NaCl + NaClO + H2O
+
+Na2O2 + H2O = NaOH + O2 =>
+2 Na2O2 + 2 H2O = 4 NaOH + O2
+
+MgCO3 = MgO + CO2 =>
+MgCO3 = MgO + CO2
+
+NH3 + NO = N2 + H2O =>
+4 NH3 + 6 NO = 5 N2 + 6 H2O
+
+C6H12 + O2 = H2O + CO2 =>
+C6H12 + 9 O2 = 6 H2O + 6 CO2
+
+C6H12 + O2 = H2O + CO2 =>
+C6H12 + 9 O2 = 6 H2O + 6 CO2
+

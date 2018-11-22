@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VR Walkthrough - A-Frame</title>
+    <meta name="description" content="VR representation of packing in solids.">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+    <script>
+    function drawSphere(pos,rad,col){
+      atom= document.createElement("a-entity");
+      console.log("adding child");
+      atom.setAttribute("geometry", {primitive: "sphere", color:col, radius:rad});
+      atom.setAttribute("position",pos);
+      atom.setAttribute("material"," transparent: true;metalness:0.8; roughness: 0.5; color: "+col+";");
+      scen=document.querySelector("a-scene");
+      scen.appendChild(atom);
+      console.log("added child");
+    }
+    function drawLine(length, x,y,z, color){
+      r=1
+      col=color
+      for(var i=0; i<length; i++)
+        {  console.log(i);
+           x+=2;
+           console.log(y);
+           drawSphere(x+" "+y+" "+z, r,col);
+        }
+    }
+    function drawPlane(neighbours, rows){
+      y=1.1;
+      depth=30
+      colors=["blue","purple"];
+
+        for(var i=0; i< rows; i++){
+          y+=2-(neighbours==6)*0.25;
+            x=-rows+ (i%2)*(neighbours==6);
+            drawLine(10,x,y, depth*(-1 *(neighbours==4))+ depth*(neighbours==6),colors[i%2]);
+
+    }
+  }
+
+  window.onload= function(){
+    drawPlane(4,10);
+    drawPlane(6,10);
+  }
+    </script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="pink" src="https://img.gs/bbdkhfbzkk/stretch/http://i.imgur.com/1hyyIUi.jpg" crossorigin="anonymous" />
+        <img src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" id="grid" crossorigin="anonymous">
+        <img src="https://img.gs/bbdkhfbzkk/2048x1024,stretch/http://i.imgur.com/WMNH2OF.jpg" id="chrome" crossorigin="anonymous">
+        <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
+        <a-asset-item id="dawningFont" src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2FdawningOfANewDayRegular.typeface.json?1490305922844"></a-asset-item>
+        <a-asset-item id="exoFont" src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2Black.typeface.json?1490305922150"></a-asset-item>
+        <a-asset-item id="exoItalicFont" src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2BlackItalic.typeface.json?1490305922725"></a-asset-item>
+      </a-assets>
+
+
+
+      <a-entity
+        geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
+        material="src: #grid; repeat: 10000 10000; transparent: true;metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;"></a-entity>
+
+      <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
+      <a-entity light="color: #ffaaff; intensity: 1.5" position="5 5 5"></a-entity>
+      <a-entity light="color: white; intensity: 0.5" position="-5 5 15"></a-entity>
+      <a-entity light="color: white; type: ambient;"></a-entity>
+      <a-light  color="pink" position="0 3 0"></a-light>
+
+      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+
+    </a-scene>
+  </body>
+</html>
