@@ -1,4 +1,4 @@
 <?php
 
-	echo "val:1";
+	echo "1";
 ?>

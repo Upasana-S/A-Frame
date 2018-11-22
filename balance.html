@@ -190,7 +190,7 @@
 	<script>
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
-
+		var side=0;
 		obj=
 			{
 				xhr: new XMLHttpRequest(),
@@ -208,8 +208,10 @@
 						obj.xhr.abort();*/
 			
 						myobj = obj.xhr.responseText;
-			
-						alert(myobj);
+						side=myobj-0;
+						unbalance();
+						//alert(myobj);
+						
 					}
 				},
 
@@ -262,7 +264,6 @@
 		}
 		draw_images();
 		//window.addEventListener("click", unbalance,true);
-		var side=0;
 		var angle=0;
 		function unbalance()
 		{
