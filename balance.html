@@ -188,6 +188,7 @@
   <script src="js/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script>
+		
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
 		var side=0;
@@ -227,11 +228,27 @@
 				}
 			};
 
-		function read_equation()
-		{
-			str="Mg(ClO3)2 = MgCl2 + O2";
+		function read_equation(str, level)
+		{	obj.level=level;
+			obj.str=str;
 			eqt=format(str);
 			display_equation(eqt);
+		}
+		
+		function get_next(str,level){
+			probs={easy:[0.2,0.6,1], medium: [0.1,0.6,1], hard:[0.1,0.4,1]};
+			levels=["easy","medium","hard"];
+			r= Math.random()
+			for(i=0; i<3; i++)
+				if(r<= probs[obj.level][i])
+					{ obj.level=levels[i];
+					  //retrieve next
+					 //obj.xhr2= new XMLHTTPRequest();
+					 //obj.xhr.open("GET", "getmsg.php?level="+obj.level, true);
+					 console.log(obj.level,r);
+					  break;
+					}
+					
 		}
 		function draw_images()
 		{
@@ -305,7 +322,7 @@
 			
 			setTimeout(unbalance, 50);
 		}
-		read_equation();
+		read_equation("Mg(ClO3)2 = MgCl2 + O2", "medium");
 		function format(eqt)
 		{
 			eqt=eqt.split("=");
@@ -357,5 +374,7 @@
 		
 	</script>
 </body>
+
+
 
 </html>
