@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title> Types of Chemical Reactions </title>
 		<style>
 		</style>
 
@@ -8,6 +9,7 @@
 			scrollAmt=100;
 			count=0;
 			function getChunk(){
+				console.log("getting Chunk");
 				scroll=document.body.scrollTop||document.documentElement.scrollTop;
 				if(scroll>scrollAmt){
 					scrollAmt=scroll;
@@ -32,8 +34,6 @@
 		</script>
 	</head>
 	<body = "content">
-
-
-		</p>
+	<button onclick="getChunk"/>
 	</body>
 </html>
