@@ -1,0 +1,461 @@
+var PREBID_TIMEOUT = 800;
+
+var w=window,d=document,e=d.documentElement,g=d.getElementsByTagName('body')[0],x=w.innerWidth||e.clientWidth||g.clientWidth,y=w.innerHeight||e.clientHeight||g.clientHeight;
+var browserWidth = x;
+var browserHeight = y;
+
+var pbjs = pbjs || {};
+pbjs.que = pbjs.que || [];
+
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+
+pbjs.que.push(function() {
+
+    pbjs.bidderSettings = {
+        standard: {
+            adserverTargeting: [
+                {
+                    key: "hb_bidder",
+                    val: function(bidResponse) {
+                        return bidResponse.bidderCode;
+                    }
+                }, {
+                    key: "hb_adid",
+                    val: function(bidResponse) {
+                        return bidResponse.adId;
+                    }
+                }, {
+                    key: "hb_pb",
+                    val: function (bidResponse) {
+                        var cpm = bidResponse.cpm;
+                        if (cpm < 10.00) {
+                            return (Math.floor(cpm * 100) / 100).toFixed(2);
+                        } else if (cpm < 20.00) {
+                            return (Math.floor(cpm * 2) / 2).toFixed(2);
+                        } else {
+                            return '20.00';
+                        }
+                    }
+                }, {
+                    key: 'hb_size',
+                    val: function (bidResponse) {
+                        return bidResponse.size;
+                    }
+                }]
+        },
+        brealtime: {bidCpmAdjustment : function(bidCpm){return bidCpm * 0.8;}},
+        rubicon: {bidCpmAdjustment : function(bidCpm){return bidCpm * 0.8;}},
+
+    };
+});
+
+
+var adUnits = [];
+var adSlots = [];
+var appearTmr = null;
+var newContentTmr;
+var firstLoad = true;
+var slotTargeting = [];
+
+
+// Load GPT asynchronously
+(function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+})();
+
+(function(g,o){g[o]=g[o]||function(){(g[o]['q']=g[o]['q']||[]).push(
+    arguments)},g[o]['t']=1*new Date})(window,'_googCsa');
+
+(function( $ ) {
+
+
+    $(function() {
+
+        newContentTmr  = setInterval(function(){ loadAdUnits(); /* loadScriptUnits(); */}, 250);
+        loadSearchAdUnits();
+
+    })
+
+})( jQuery );
+
+function loadAdUnits() {
+
+
+    var unitIds = [];
+
+    jQuery('.du-ad-unit').each(function(){
+
+
+        if(jQuery(this).data('refreshed') == false){
+
+            unitIds.push({
+                'slot-id':jQuery(this).data('slot-id'),
+                'div-id':jQuery(this).attr('id'),
+                'target':jQuery(this).data('target')
+            })
+
+            jQuery(this).data('refreshed',true);
+        }
+
+
+    });
+
+    if(!jQuery.isEmptyObject(unitIds)){
+
+        var data =
+            {
+                security: ajax_security,
+                action: 'get_ad_units',
+                browserWidth:browserWidth,
+                browserHeight:browserHeight,
+                unitIds:unitIds,
+
+            }
+
+
+
+        jQuery.post(ajaxurl, data, function (response) {
+
+
+            try {
+
+                clearInterval(appearTmr);
+                appearTmr = null;
+
+                initAdSlotQueue(response);
+                googleTagInit();
+
+            }catch (e){
+
+                console.log(e);
+            }
+
+
+        },'json');
+
+    }
+
+
+}
+
+function loadSearchAdUnits() {
+
+
+    var unitIds = [];
+
+    jQuery('.du-ad-unit-search').each(function(){
+
+
+        if(jQuery(this).data('refreshed') == false){
+
+            unitIds.push({
+                'slot-id':jQuery(this).data('slot-id'),
+                'div-id':jQuery(this).attr('id'),
+                'search-query':jQuery(this).data('search-query')
+            })
+
+            jQuery(this).data('refreshed',true);
+        }
+
+
+    });
+
+    if(!jQuery.isEmptyObject(unitIds)){
+
+        var data =
+            {
+                security: ajax_security,
+                action: 'get_ad_units',
+                unitIds:unitIds
+
+            }
+
+        jQuery.post(ajaxurl, data, function (response) {
+
+
+            try {
+
+                response.forEach(function(unit) {
+
+                    _googCsa('ads',unit.options,unit.blockOption);
+
+                });
+
+            }catch (e){
+
+                console.log(e)
+            }
+
+
+        },'json');
+
+    }
+
+}
+
+function loadScriptUnits() {
+
+    var unitIds = [];
+
+    jQuery('.du-ad-unit-script').each(function(){
+
+
+        if(jQuery(this).data('refreshed') == false){
+
+            unitIds.push({
+                'slot-id':jQuery(this).data('slot-id'),
+                'div-id':jQuery(this).attr('id'),
+                'target':jQuery(this).data('target')
+            })
+
+            jQuery(this).data('refreshed',true);
+        }
+
+
+    });
+
+    if(!jQuery.isEmptyObject(unitIds)){
+
+        var data =
+            {
+                security: ajax_security,
+                action: 'get_scripts_units',
+                unitIds:unitIds
+
+            }
+
+        jQuery.post(ajaxurl, data, function (response) {
+
+
+            try {
+
+                var script = jQuery(response);
+                document.getElementsByTagName("head")[0].appendChild(script[0]);
+
+
+            }catch (e){
+
+                console.log(e);
+            }
+
+
+        });
+
+    }
+
+}
+function initAdSlotQueue(response){
+
+    adUnits = [];
+
+
+    response.forEach(function(unit) {
+
+        var adObj = new Dummies_Ad_Unit(unit.slot, unit.defaulSize,unit.screenResolutions, unit.code,unit.bids);
+		adObj.id = unit.id;
+
+
+        unit.target.forEach(function(target) {
+
+            adObj.setTarget(target.key,target.values);
+
+        });
+
+        adObj.sizes = [];
+        var resolutionSelected = false;
+
+        unit.screenResolutions.forEach(function(size) {
+
+            var screenWidth = size[0][0];
+            var screenHeight = size[0][1];
+
+            if (browserWidth >= screenWidth && browserHeight >= screenHeight && !resolutionSelected) {
+
+                adObj.sizes = size[1];
+                resolutionSelected = true;
+            }
+
+        });
+
+
+        if(!jQuery.isEmptyObject(adObj.sizes)){
+
+            adUnits.push(adObj);
+        }
+
+
+    });
+}
+
+
+function googleTagInit() {
+
+    googletag.cmd.push(function () {
+
+        adUnits.forEach(function(unit,index) {
+
+            var mapping =  googletag.sizeMapping();
+
+
+             unit.getScreenResolutions().forEach(function(resolution) {
+
+                 mapping = mapping.addSize(resolution[0],resolution[1]);
+            });
+
+
+            mapping = mapping.build();
+
+            var slot = googletag.defineSlot(unit.getSlot(),unit.getDefaultSize(), unit.getCode()).addService(googletag.pubads());
+
+
+            unit.getTarget().forEach(function(target) {
+
+                slot.setTargeting(target.key,target.values);
+
+            });
+
+            slot.defineSizeMapping(mapping);
+
+            adSlots.push({
+                'key':unit.getCode(),
+                'slot_key':unit.getSlot(),
+                'refresh':false,
+                'slot' :slot
+            });
+
+        });
+
+        if(firstLoad){
+
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().disableInitialLoad();
+            googletag.enableServices();
+            firstLoad = false;
+        }
+
+    });
+
+    pbjs.adserverRequestSent = false;
+
+    pbjs.que.push(function() {
+
+        pbjs.adUnits = [];
+        console.log(adUnits);
+
+        pbjs.addAdUnits(adUnits);
+
+        pbjs.requestBids({
+            bidsBackHandler: sendAdserverRequest
+        });
+    });
+
+    setTimeout(function() {
+        sendAdserverRequest();
+    }, PREBID_TIMEOUT);
+
+}
+
+
+function sendAdserverRequest() {
+
+
+    if (pbjs.adserverRequestSent) return;
+
+    var targetingParams = pbjs.getAdserverTargeting();
+
+
+    console.log(targetingParams);
+
+    googletag.cmd.push(function() {
+        pbjs.que.push(function() {
+            pbjs.setTargetingForGPTAsync();
+
+            if(!appearTmr){
+
+                appearTmr  = setInterval(function(){ refreshSlots(true) }, 150);
+            }
+
+        });
+    });
+
+    pbjs.adserverRequestSent = true;
+}
+
+function refreshSlots(exclude) {
+
+    var slotRefreshed = 0;
+    var refreshAds = [];
+    adSlots.forEach(function(item,index) {
+
+        if(item.refresh){
+
+            slotRefreshed++;
+        }
+
+        if(!item.refresh && jQuery('#' + item.key).is(':visible') && exclude_ads(item.slot_key,exclude)){
+
+                googletag.display(item.key);
+                adSlots[index].refresh = true;
+                refreshAds.push(item.slot);
+
+
+            //googletag.pubads().refresh([item.slot]);
+        }
+
+    });
+
+    if(refreshAds.length > 0){
+
+        googletag.pubads().refresh(refreshAds);
+    }
+
+    if(slotRefreshed == adSlots.length){
+
+        clearInterval(appearTmr);
+
+    }
+}
+
+
+ function isInViewport(div_id) {
+
+    var elementTop = jQuery(div_id).offset().top;
+    var elementBottom = elementTop + jQuery(this).outerHeight();
+
+    var viewportTop = jQuery(window).scrollTop();
+    var viewportBottom = viewportTop + jQuery(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom ;
+}
+
+function exclude_ads(slot_key,exclude) {
+
+    var slot_keys = ['article_page_one_by_one','article_page_content'];
+
+    var show = true;
+
+    for(var i = 0; i < slot_keys.length; i++ ){
+
+        if(exclude){
+
+             if(slot_key.search(slot_keys[i]) != -1 ){
+
+                show = false;
+            }
+
+        }
+    }
+
+
+    return show;
+
+}
+
