@@ -23,7 +23,7 @@
 
 </head>
 
-<body class="homepage">
+<body class="homepage" onload="obj.geteq()">
   <header id="header">
     <nav class="navbar navbar-fixed-top" role="banner">
       <div class="container">
@@ -191,12 +191,14 @@
 		
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
+		var eqnum=1;
 		var side=0;
+		var level="easy";
 		obj=
 			{
 				xhr: new XMLHttpRequest(),
 
-				showVID: function()
+				showbal: function()
 				{
 					if(obj.xhr.readyState == 4 && obj.xhr.status== 200)
 					{
@@ -209,43 +211,92 @@
 						obj.xhr.abort();*/
 			
 						myobj = obj.xhr.responseText;
+						console.log(myobj);
 						side=myobj-0;
+						console.log(side);
 						unbalance();
 						//alert(myobj);
 						
 					}
 				},
 
-				getMsg: function()
+				getbal: function()
 				{
 					
-					obj.xhr.onreadystatechange = obj.showVID;
+					obj.xhr.onreadystatechange = obj.showbal;
+					lhs=document.getElementsByClassName("LHScoefficients");
+					url="getmsg.php?";
+					for(i=0; i<lhs.length; i++)
+					{
+						if(i==0)
+						{
+							url+="lhs["+i+"]="+lhs[i].value;
+						}
+						else
+						{
+							url+="&lhs["+i+"]="+lhs[i].value;
+						}
+						
+					}
+					rhs=document.getElementsByClassName("RHScoefficients");
+					
+					for(i=0; i<rhs.length; i++)
+					{
+						url+="&rhs["+i+"]="+rhs[i].value;
+					}
+					url+="&eqnum="+eqnum;
+					console.log(url);
+					obj.xhr.open("GET", url, true);
+	
+					obj.xhr.send();
+					
+				},
+				
+				showeq: function()
+				{
+					if(obj.xhr.readyState == 4 && obj.xhr.status== 200)
+					{
+						
+						myobj = JSON.parse(obj.xhr.responseText);
+						eqnum=myobj.eqnum;
+						clear_equation();
+						read_equation(myobj.equation);
+						//alert(myobj);
+						
+					}
+				},
+
+				geteq: function()
+				{
+					
+					obj.xhr.onreadystatechange = obj.showeq;
 			
-					obj.xhr.open("GET", "getmsg.php", true);
+					obj.xhr.open("GET", "retr_eqts.php?level="+level, true);
 	
 					obj.xhr.send();
 					
 				}
+
+
 			};
 
-		function read_equation(str, level)
-		{	obj.level=level;
-			obj.str=str;
+		function read_equation(str)
+		{	
 			eqt=format(str);
 			display_equation(eqt);
 		}
 		
-		function get_next(str,level){
+		function get_next(level){
 			probs={easy:[0.2,0.6,1], medium: [0.1,0.6,1], hard:[0.1,0.4,1]};
 			levels=["easy","medium","hard"];
 			r= Math.random()
 			for(i=0; i<3; i++)
-				if(r<= probs[obj.level][i])
-					{ obj.level=levels[i];
+				if(r<= probs[level][i])
+					{ level=levels[i];
 					  //retrieve next
 					 //obj.xhr2= new XMLHTTPRequest();
 					 //obj.xhr.open("GET", "getmsg.php?level="+obj.level, true);
-					 console.log(obj.level,r);
+					  obj.geteq();
 					  break;
 					}
 					
@@ -298,11 +349,10 @@
 				}
 				else
 				{
-					side=1;
 					return;
 				}
 			}
-			else
+			else if(side==1)
 			{
 				if(y2 < 700)
 				{
@@ -315,14 +365,44 @@
 				}
 				else
 				{
-					side=0;
+					return;
+				}
+			}
+			else
+			{
+				if(y1 > 600)
+				{
+					beam1.clearRect(x1, y1, 200, 50);
+					beam2.clearRect(x2, y2, 200, 50);
+					y2+=5;
+					y1-=5;
+					beam1.fillRect(x1, y1, 200, 50);
+					beam2.fillRect(x2, y2, 200, 50);
+				}
+				else if(y1 <600)
+				{
+					beam1.clearRect(x1, y1, 200, 50);
+					beam2.clearRect(x2, y2, 200, 50);
+					y1+=5;
+					y2-=5;
+					beam1.fillRect(x1, y1, 200, 50);
+					beam2.fillRect(x2, y2, 200, 50);
+				}
+				else if(side==3)
+				{
+					but=document.createElement("input");
+					but.type="button"
+					but.value="Next";
+					but.onclick=get_next(level);
+					equation=document.getElementById("equation");
+					equation.appendChild(but);
 					return;
 				}
 			}
 			
 			setTimeout(unbalance, 50);
 		}
-		read_equation("Mg(ClO3)2 = MgCl2 + O2", "medium");
+		//read_equation("Mg(ClO3)2 = MgCl2 + O2", "medium");
 		function format(eqt)
 		{
 			eqt=eqt.split("=");
@@ -331,17 +411,30 @@
 			return [LHS, RHS];
 		}
 		
+		function clear_equation()
+		{
+			equation=document.getElementById("equation");
+			equation.innerHTML="";
+		}
+
 		function display_equation(eqt)
 		{
 			equation=document.getElementById("equation");
 			console.log(eqt[0], eqt[0].length);
 			for(i=0; i<eqt[0].length; i++)
 			{
+				if(i>0)
+				{
+					sp=document.createElement("span");
+					sp.innerHTML=" + ";
+					equation.appendChild(sp);
+				}
 				inp=document.createElement("input");
 				inp.type="text";
 				inp.style.width="50px";
 				inp.value="1";
-				inp.onblur=obj.getMsg;
+				inp.onblur=obj.getbal;
+				inp.className="LHScoefficients";
 				equation.appendChild(inp);
 				sp=document.createElement("span");
 				sp.innerHTML=eqt[0][i];
@@ -362,6 +455,8 @@
 				inp.type="text";
 				inp.style.width="50px";
 				inp.value="1";
+				inp.onblur=obj.getbal;
+				inp.className="RHScoefficients";
 				equation.appendChild(inp);
 				sp=document.createElement("span");
 				sp.innerHTML=eqt[1][i];
