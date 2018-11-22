@@ -9,6 +9,7 @@
 			scrollAmt=100;
 			count=0;
 			function getChunk(){
+				console.log("getting Chunk");
 				scroll=document.body.scrollTop||document.documentElement.scrollTop;
 				if(scroll>scrollAmt){
 					scrollAmt=scroll;
