@@ -195,18 +195,6 @@
 			{
 				xhr: new XMLHttpRequest(),
 
-				getMsg: function()
-				{
-					
-					this.xhr.onreadystatechange = this.showMsg;
-			
-					this.xhr.open("GET", "https://upasana-s.github.io/TNT/getmsg.php", true);
-	
-					this.xhr.send();
-					alert("worked");
-				},
-	
-	
 				showMsg: function()
 				{
 					if(obj.xhr.readyState == 4 && obj.xhr.status== 200)
@@ -223,6 +211,17 @@
 			
 						alert(myobj);
 					}
+				},
+
+				getMsg: function()
+				{
+					
+					this.xhr.onreadystatechange = this.showMsg;
+			
+					this.xhr.open("GET", "https://upasana-s.github.io/TNT/getmsg.php", true);
+	
+					this.xhr.send();
+					alert("worked");
 				}
 			};
 
