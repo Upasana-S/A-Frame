@@ -10,18 +10,15 @@
 			count=0;
 			function getChunk(){
 				console.log("getting Chunk");
-				scroll=document.body.scrollTop||document.documentElement.scrollTop;
-				if(scroll>scrollAmt){
-					scrollAmt=scroll;
-					xhr.onreadystatechange=showChunk;
-					xhr.open("GET","https://Upasana-S.github.io/TNT/getChunk.php?count="+count++,true);
-					xhr.send();
-				}
+				xhr.onreadystatechange=showChunk;
+				xhr.open("GET","getChunk.php?count="+count++,true);
+				xhr.send();
+				
 			}
 			function showChunk(){
 			console.log(xhr.status)
 				if(xhr.readyState==4 && xhr.status==200){
-				console.log("hello");
+				console.log(xhr.responseText);
 					document.getElementById("content").innerHTML+=xhr.responseText;
 
 
