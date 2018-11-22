@@ -2,48 +2,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VR Walkthrough - A-Frame</title>
+    <title>Close Packing in Crystals</title>
     <meta name="description" content="VR representation of packing in solids.">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
     <script>
     function drawSphere(pos,rad,col){
       atom= document.createElement("a-entity");
-      console.log("adding child");
+      //console.log("adding child");
       atom.setAttribute("geometry", {primitive: "sphere", color:col, radius:rad});
       atom.setAttribute("position",pos);
       atom.setAttribute("material"," transparent: true;metalness:0.8; roughness: 0.5; color: "+col+";");
       scen=document.querySelector("a-scene");
       scen.appendChild(atom);
-      console.log("added child");
     }
     function drawLine(length, x,y,z, color){
       r=1
       col=color
       for(var i=0; i<length; i++)
-        {  console.log(i);
+        {
            x+=2;
-           console.log(y);
            drawSphere(x+" "+y+" "+z, r,col);
         }
     }
-    function drawPlane(neighbours, rows){
-      y=1.1;
-      depth=30
-      colors=["blue","purple"];
-
+    function drawPlane(neighbours, rows,depth=30,x_o=0,y_o=0,colors=["blue","purple"]){
+      y=1.1+y_o;
         for(var i=0; i< rows; i++){
           y+=2-(neighbours==6)*0.25;
-            x=-rows+ (i%2)*(neighbours==6);
+            x=-rows+ (i%2)*(neighbours==6)+x_o;
             drawLine(10,x,y, depth*(-1 *(neighbours==4))+ depth*(neighbours==6),colors[i%2]);
 
     }
   }
+  function drawSolid(type, depth){
+ var z_o=depth;
+    cols=["purple","blue"];
+      for(var i=0; i< 10; i++){
+        z_o += 2-(type=="hcp")*0.25;
+        y_o =(type=="hcp")*(i%2);
+        x_o=(type=="hcp")*(i%2);
+        console.log("depth"+z_o);
+        drawPlane(6,10,z_o,100+x_o,5+y_o, [cols[i%2],cols[i%2]]);
+        }
+  }
 
+  function moveCamera(e){
+    console.log("moving camera");
+  }
   window.onload= function(){
     drawPlane(4,10);
     drawPlane(6,10);
+    drawSolid("fcc", -30);
+    drawSolid("hcp", -60);
   }
+
     </script>
   </head>
   <body>
