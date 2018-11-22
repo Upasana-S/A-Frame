@@ -195,7 +195,7 @@
 			{
 				xhr: new XMLHttpRequest(),
 
-				showMsg: function()
+				showVID: function()
 				{
 					if(obj.xhr.readyState == 4 && obj.xhr.status== 200)
 					{
@@ -216,12 +216,12 @@
 				getMsg: function()
 				{
 					
-					this.xhr.onreadystatechange = this.showMsg;
+					obj.xhr.onreadystatechange = obj.showVID;
 			
-					this.xhr.open("GET", "https://upasana-s.github.io/TNT/getmsg.php", true);
+					obj.xhr.open("GET", "https://upasana-s.github.io/TNT/getmsg.php", true);
 	
-					this.xhr.send();
-					alert("worked");
+					obj.xhr.send();
+					
 				}
 			};
 
