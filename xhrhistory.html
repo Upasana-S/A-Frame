@@ -41,6 +41,7 @@ obj =
 	{
 		if(obj.xhr.readyState == 4 && obj.xhr.status== 200)
 		{
+			alert(this.responseText);
 			moviedetails = JSON.parse(this.responseText);
 			
 			document.getElementById("lead").value = moviedetails.lead;
