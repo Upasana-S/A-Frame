@@ -6,6 +6,46 @@
     <meta name="description" content="VR representation of packing in solids.">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+   <style>
+     #page {
+    display: none;
+}
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+    background-image: url("http://i.stack.imgur.com/MnyxU.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+</style>
+    <script>
+    function onReady(callback) {
+    var intervalID = window.setInterval(checkReady, 1000);
+
+    function checkReady() {
+        console.log("still loading");
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+            window.clearInterval(intervalID);
+            callback.call(this);
+        }
+    }
+}
+
+function show(id, value) {
+    document.getElementById(id).style.display = value ? 'block' : 'none';
+}
+
+onReady(function () {
+    show('page', true);
+    show('loading', false);
+});
+</script>
     <script>
     function drawSphere(pos,rad,col){
       atom= document.createElement("a-entity");
@@ -59,6 +99,7 @@
     </script>
   </head>
   <body>
+       <div  id="page">
     <a-scene>
       <a-assets>
         <img id="pink" src="https://img.gs/bbdkhfbzkk/stretch/http://i.imgur.com/1hyyIUi.jpg" crossorigin="anonymous" />
@@ -71,7 +112,7 @@
       </a-assets>
 
 
-
+     
       <a-entity
         geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
         material="src: #grid; repeat: 10000 10000; transparent: true;metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;"></a-entity>
@@ -83,7 +124,10 @@
       <a-light  color="pink" position="0 3 0"></a-light>
 
       <a-sky src="#sky" rotation="0 -90 0"></a-sky>
-
+       <a-link href="home.html" title="HOME"><script> drawSphere(10,10,-5)</script> </a-link>
     </a-scene>
+<div id="loading"></div>
+ </div>
+
   </body>
 </html>
