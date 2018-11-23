@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gp Bootstrap Template</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link href="css/animate.min.css" rel="stylesheet">
+  <link href="css/prettyPhoto.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <!-- =======================================================
+    Theme Name: Gp
+    Theme URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-templat/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+  <script LANGUAGE="JavaScript">
+<!-- Original:  Matthew Hoesch (mdih@msn.com) -->
+
+
+
+<!-- Begin
+//function display (Name, Number, Weight, Melt, Freeze) {
+function display (Number) {
+
+	var xhr=new XMLHttpRequest();
+	function init(){
+	  xhr.onreadystatechange=showContent;
+	  xhr.open("GET","chem.php?element="+Number,true);
+	  xhr.send();
+	}
+
+	function showContent(){
+	  if(xhr.readyState==4 && xhr.status==200){
+		  var res=xhr.responseText;
+		  var resJson=JSON.parse(res);
+		  console.log(res);
+		  console.log(resJson);
+		  console.log(resJson["name"]);
+		  document.table.name.value=resJson["name"];
+		  document.table.number.value=resJson["atomicNumber"];
+		  document.table.weight.value=resJson["atomicMass"];
+		  document.table.melt.value=resJson["meltingPoint"];
+		  document.table.boil.value=resJson["boilingPoint"];
+		  document.table.atomicRadius.value=resJson["atomicRadius"];
+		  document.table.electronicConfiguration.value=resJson["electronicConfiguration"];
+		  document.table.yearDiscovered.value=resJson["yearDiscovered"];
+		  document.table.standardState.value=resJson["standardState"];
+		  
+		  
+		  /*
+
+atomicRadius: 37
+
+electronicConfiguration: "1s1"
+
+yearDiscovered: 1766*/
+		}
+	}
+	init();
+
+}
+// End -->
+</script>
+</head>
+
+<body class="homepage">
+  <header id="header">
+    <nav class="navbar navbar-fixed-top" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+          <a class="navbar-brand" href="index.html">Gp.</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="home.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="vr_walkthrough.html">Close Packing in solids</a></li>
+            <li><a href="reactions_theory.html">Balancing Equations</a></li>
+            <li><a href="periodic.html">Periodic Table</a></li>
+            <li><a href="contact-us.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--/.container-->
+    </nav>
+    <!--/nav-->
+
+  </header>
+  <!--/header-->
+
+  <section id="portfolio">
+    <div class="container">
+      <div class="center">
+        <h2>Periodic Table</h2>
+      </div>
+<center><h2>Periodic Table of the Elements</h2>
+<p>
+<form>
+<table cellspacing=2 cellpadding=0 width=500>
+<tr>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(1);">H</a></td>
+<td colspan="16"></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(2);">He</a></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(3);">Li</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(4);">Be</a></td>
+<td colspan="10"></td>
+<td align=center bgcolor="#FF4500"><a
+href="javascript:display(5);">B</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(6);">C</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(7);">N</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(8);">O</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(9);">F</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(10);">Ne</a></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(11);">Na</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(12);">Mg</a></td>
+<td colspan="10"></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(13);">Al</a></td>
+<td align=center bgcolor="#FF4500"><a
+href="javascript:display(14);">Si</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(15);">P</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(16);">S</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(17);">Cl</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(18);">Ar</a></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(19);">K</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(20);">Ca</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(21);">Sc</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(22);">Ti</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(23);">V</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(24);">Cr</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(25);">Mn</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(26);">Fe</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(27);">Co</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(28);">Ni</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(29);">Cu</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(30);">Zn</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(31);">Ga</a></td>
+<td align=center bgcolor="#FF4500"><a
+href="javascript:display(32);">Ge</a></td>
+<td align=center bgcolor="#FF4500"><a
+href="javascript:display(33)">As</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(34);">Se</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(35);">Br</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(36);">Kr</a></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(37);">Rb</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(38);">Sr</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(39);">Y</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(40);">Zr</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(41);">Nb</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(42);">Mo</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(43);">Tc</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(44);">Ru</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(45);">Rh</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(46);">Pd</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(47);">Ag</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(48);">Cd</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(49);">In</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(50);">Sn</a></td>
+<td align=center bgcolor="#FF4500"><a
+href="javascript:display(51);">Sb</a></td>
+<td align=center bgcolor="#FF4500"><a
+href="javascript:display(52);">Te</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(53)">I</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(54);">Xe</a></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(55);">Cs</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(56);">Ba</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(57);">La</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(72);">Hf</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(73);">Ta</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(74);">W</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(75);">Re</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(76);">Os</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(77);">Ir</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(78);">Pt</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(79);">Au</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(80);">Hg</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(81);">Tl</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(82);">Pb</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(83);">Bi</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(84);">Po</a></td>
+<td align=center bgcolor="#FF4500"><a
+href="javascript:display(85);">At</a></td>
+<td align=center bgcolor="#FFE4C4"><a
+href="javascript:display(86);">Rn</a></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(87);">Fr</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(88);">Ra</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(89);">Ac</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(104);">Unq</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(105);">Unp</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(106);">Unh</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(107);">Uns</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(108);">Uno</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(109);">Une</a></td>
+<td colspan="9"></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(58);">Ce</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(59);">Pr</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(60);">Nd</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(61);">Pm</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(62);">Sm</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(63);">Eu</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(64);">Gd</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(65);">Tb</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(66);">Dy</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(67);">Ho</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(68);">Er</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(69);">Tm</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(70);">Yb</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(71);">Lu</a></td>
+<td colspan="4"></td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(90);">Th</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(91);">Pa</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(92);">U</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(93);">Np</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(94);">Pu</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(95);">Am</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(96);">Cm</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(97);">Bk</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(98);">Cf</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(99);">Es</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(100);">Fm</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(101);">Md</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(102);">No</a></td>
+<td align=center bgcolor="#5F9EA0"><a
+href="javascript:display(103);">Lr</a></td>
+<td colspan="4"></td>
+</tr>
+</table>
+</form>
+<form name="table">
+<table width="500">
+<tr>
+<td align="center" width="33%">Name</td>
+<td align="center" width="33%">Number</td>
+<td align="center" width="33%">Weight</td>
+</tr>
+<tr>
+<td align="center" width="33%"><input type="text" name="name" value=" " size="14"></td>
+<td align="center" width="33%"><input type="text" name="number" value=" " size="6"></td>
+<td align="center" width="33%"><input type="text" name="weight" value=" " size="16"></td>
+</tr>
+<tr>
+<td align="center" width="33%">Melting point (in Kelvin)</td>
+<td align="center" width="33%">Year Discovered</td>
+<td align="center" width="33%">Boiling point (in Kelvin)</td>
+</tr>
+<tr>
+<td align="center" width="33%"><input type="text" name="melt" value=" " size="18"></td>
+<td align="center" width="33%"><input type="text" name="yearDiscovered" value=" " size="8"></td>
+<td align="center" width="33%"><input type="text" name="boil" value=" " size="18"></td>
+</tr>
+<tr>
+<td align="center" width="33%">Electronic Configuration</td>
+<td align="center" width="33%">Standard State</td>
+<td align="center" width="33%">Atomic Radius</td>
+</tr>
+
+<tr>
+<td align="center" width="33%"><input type="text" name="electronicConfiguration" value=" " size="24"></td>
+<td align="center" width="33%"><input type="text" name="standardState" value=" " size="10"></td>
+<td align="center" width="33%"><input type="text" name="atomicRadius" value=" " size="10"></td>
+</tr>
+</table>
+</form>
+
+<hr width=600>
+<p><center>
+<table border=1 width=500>
+<tr><td colspan=2 align=center>Legend</td>
+</tr>
+<tr>
+<td align=center bgcolor="#5F9EA0">Metals</td>
+<td>A solid substance that is a good conductor of eat and electicity.  Can be formed into many shapes.</td>
+</tr>
+<tr>
+<td align=center bgcolor="#FF4500">Metalloid</td>
+<td>"Middle elements" - conduct heat and electricity better than nonmetals, but not as well as metals. Easier to shape than nonmetals, but not as easy as metals.  Solid at room temperature.</td>
+</tr>
+<tr>
+<td align=center bgcolor="#FFE4C4">Nonmetals</td>
+<td>A poor conductor of heat and electricity.  Not easily formed into shapes.</td>
+</tr>
+</table>
+</center>
+
+      
+  </section>
+  <!--/#portfolio-item-->
+
+  <section id="bottom">
+    <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="widget">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">We are hiring</a></li>
+              <li><a href="#">Meet the team</a></li>
+              <li><a href="#">Copyright</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/.col-md-3-->
+
+        <div class="col-md-3 col-sm-6">
+          <div class="widget">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">Faq</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Forum</a></li>
+              <li><a href="#">Documentation</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/.col-md-3-->
+
+        <div class="col-md-3 col-sm-6">
+          <div class="widget">
+            <h3>Developers</h3>
+            <ul>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">SEO Marketing</a></li>
+              <li><a href="#">Theme</a></li>
+              <li><a href="#">Development</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/.col-md-3-->
+
+        <div class="col-md-3 col-sm-6">
+          <div class="widget">
+            <h3>Our Partners</h3>
+            <ul>
+              <li><a href="#">Adipisicing Elit</a></li>
+              <li><a href="#">Eiusmod</a></li>
+              <li><a href="#">Tempor</a></li>
+              <li><a href="#">Veniam</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--/.col-md-3-->
+      </div>
+    </div>
+  </section>
+  <!--/#bottom-->
+
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="social">
+            <ul class="social-share">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a href="#"><i class="fa fa-skype"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.container-->
+  </div>
+  <!--/.top-bar-->
+
+  <footer id="footer" class="midnight-blue">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          &copy; Gp Theme. All Rights Reserved.
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Gp
+            -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <ul class="pull-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Faq</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/#footer-->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.prettyPhoto.js"></script>
+  <script src="js/jquery.isotope.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
