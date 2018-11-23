@@ -38,13 +38,15 @@
       <div class="navbar-inner">
         <div class="container">
           <div class="logo">
-            <a href="index.html"><img src="assets/img/logo.png" alt="" /></a>
+           <span style="font-size:50px; color:white;"> Tide And Titration</span>
           </div>
           <div class="navigation">
             <nav>
               <ul class="nav pull-right">
-                <li class="current"><a href="home.html">Log in</a></li>
-                
+		<li><span><h1 style="color:white; font-size:25px;">Username</h1></span><p><input id="username" type="text" style="height:2px;"/></p><span id="error" style="display:none; color:red; font-size:20px;">Invalid Credentials</span></li>
+		<li><span><h1 style="color:white; font-size:25px;">Password</h1></span><p><input id="password" type="password" style="height:2px; margin-left:10px;"/></p></li>
+                <li class="current" style="margin-top:50px; margin-left:10px;" onclick="obj.validate()"><a href="home.html">Log in</a></li>
+                <li style="margin-top:50px; margin-left:10px;"><a href="home.html">Sign Up</a></li>
               </ul>
             </nav>
           </div>
@@ -60,8 +62,8 @@
       <div class="icon">
         <i class="icon-beaker icon-10x"></i>
       </div>
-      <h1>Welcome to <span>Vesperr</span> creative studio</h1>
-      <h2>Crafting ideas with technology and imagination</h2>
+      <h1>Welcome to <span>Tide and Titration</span> learning website</h1>
+      <h2>Helping young minds</h2>
     </div>
   </section>
   <!-- end intro -->
@@ -75,7 +77,7 @@
           </div>
           <div class="sub-heading">
             <p>
-              We have a history of doing what our name implies, creating a visual language around the beliefs of the brands we work with.
+              We have a history of doing what our name implies, providing a platform for students to improve their knowledge in chemistry.
             </p>
           </div>
         </div>
@@ -294,7 +296,47 @@
 
   <!-- Template Custom Javascript File -->
   <script src="assets/js/custom.js"></script>
+	<script>
+		obj = 
+		{
+			xhr: new XMLHttpRequest(),
 
+			validate: function()
+			{
+				//Get the movie title
+				user = document.getElementById("username");
+				pwd = document.getElementById("password");
+				if(user.value == "")
+				{
+					return;
+				}
+		
+				obj.xhr.onreadystatechange = obj.showMsg;
+				obj.xhr.open("GET", "validate.php?user="+ user.value+"&pwd="+ pwd.value, true);
+	
+				obj.xhr.send();
+			},
+	
+	
+			showMsg: function()
+			{
+				if(obj.xhr.readyState == 4 && obj.xhr.status== 200)
+				{
+					valid = this.responseText;
+					console.log(valid);
+					if(valid=="1")
+					{
+						location.href="home.html";
+					}
+					else
+					{
+						err = document.getElementById("error");
+						err.style.display="block";
+					}
+				}
+			}
+		}
+	</script>
 </body>
 
 </html>
